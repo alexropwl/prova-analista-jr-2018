@@ -1,0 +1,109 @@
+<h1>Add new User</h1>
+
+
+<?php
+$email = $form->get('email');
+$email->setAttribute('class', 'form-control');
+$nome = $form->get('nome');
+$nome->setAttribute('class', 'form-control');
+$senha = $form->get('senha');
+$senha->setAttribute('class', 'form-control');
+$telefone = $form->get('telefone');
+$telefone->setAttribute('class', 'form-control');
+$logradouro = $form->get('logradouro');
+$logradouro->setAttribute('class', 'form-control');
+$numero = $form->get('numero');
+$numero->setAttribute('class', 'form-control');
+$complemento = $form->get('complemento');
+$complemento->setAttribute('class', 'form-control');
+$bairro = $form->get('bairro');
+$bairro->setAttribute('class', 'form-control');
+$cidade = $form->get('cidade');
+$cidade->setAttribute('class', 'form-control');
+$estado = $form->get('estado');
+$estado->setAttribute('class', 'form-control');
+$cep = $form->get('cep');
+$cep->setAttribute('class', 'form-control');
+
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+$form->setAttribute('action', $this->url('usuario', ['action' =>'add']));
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+
+<div class="form-group">
+    <?=$this->formLabel($email); ?>
+    <?=$this->formElement($email); ?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($nome); ?>
+    <?=$this->formElement($nome);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($senha); ?>
+    <?=$this->formElement($senha);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($telefone); ?>
+    <?=$this->formElement($telefone);?>
+</div>
+
+
+<div class="form-group">
+    <?=$this->formLabel($logradouro); ?>
+    <?=$this->formElement($logradouro);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($numero); ?>
+    <?=$this->formElement($numero);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($complemento); ?>
+    <?=$this->formElement($complemento);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($bairro); ?>
+    <?=$this->formElement($bairro);?>
+</div>
+<div class="form-group">
+<label>Estado</label>
+<select class="form-control" name="estado" id="estado">
+
+    <option>Selecione</option>
+    <?php foreach ($estados as $est): ?>
+    <option value="<?=$est->codigo ?>"><?=$est->sigla ?></option>
+
+    <?php endforeach;?>
+
+</select>
+
+<div class="form-group">
+    <label>Cidade</label>
+        <select name="cidade" id="cidade" class="form-control">
+            <option>Cidades</option>
+          <?php foreach ($cidades as $cid): ?>
+              <option <?=$cid->codigo ?>><?=$cid->nome ?></option>
+        <?php endforeach;?>
+    </select>
+</div>
+
+    <div class="form-group">
+        <?=$this->formLabel($cep); ?>
+        <?=$this->formElement($cep);?>
+    </div>
+<?php
+echo $this->formSubmit($submit);
+
+echo $this->form()->closeTag();
+?>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    

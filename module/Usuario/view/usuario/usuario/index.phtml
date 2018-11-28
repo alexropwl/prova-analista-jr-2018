@@ -1,0 +1,21 @@
+
+
+<div class="container">
+    <h1>Login</h1>
+    <form method="post" action="#">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required="required" aria-describedby="emailHelp" placeholder="Entre com seu email">
+            <small id="emailHelp" class="form-text text-muted">Email de usuário.</small>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" class="form-control" id="senha" name="senha" required="required" placeholder="Senha">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-info"><a href="<?=$this->url('usuario', ['action' => 'add']) ?>">Adicionar</a></button>
+         </form>
+
+
+
+</div>
