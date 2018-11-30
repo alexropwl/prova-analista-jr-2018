@@ -56,7 +56,8 @@ class UsuarioForm extends Form
                 'label' => 'Telefone*'
             ],
             'attributes' => [
-                'required' => 'required'
+                'required' => 'required',
+                'id' => 'telefone'
             ]
         ]);
         $this->add([
@@ -83,10 +84,10 @@ class UsuarioForm extends Form
             'name' => 'complemento',
             'type' => 'text',
             'options' => [
-                'label' => 'Complemento*'
+                'label' => 'Complemento'
             ],
             'attributes' => [
-                'required' => 'required'
+
             ]
         ]);
         $this->add([
@@ -100,19 +101,20 @@ class UsuarioForm extends Form
             ]
         ]);
         $this->add([
-            'name' => 'cidade',
+            'name' => 'codigo_cidade',
             'type' => 'select',
             'options' => [
                 'label' => 'Cidade',
                 'disable_inarray_validator' => true,
             ],
             'attributes' => [
-                'required' => 'required'
+                'required' => 'required',
+                'id' => 'codigo_cidade'
             ]
         ]);
 
         $this->add([
-            'name' => 'estado',
+            'name' => 'codigo_estado',
             'type' => 'select',
             'options' => [
             'label' => 'Estado',
@@ -120,7 +122,9 @@ class UsuarioForm extends Form
 
             ],
             'attributes' => [
-                'required' => 'required'
+                'id' => 'codigo_estado',
+                'class' => 'estado'
+
             ]
         ]);
 
@@ -131,7 +135,8 @@ class UsuarioForm extends Form
                 'label' => 'Cep*'
             ],
             'attributes' => [
-                'required' => 'required'
+                'required' => 'required',
+                'id' => 'cep'
             ]
         ]);
 

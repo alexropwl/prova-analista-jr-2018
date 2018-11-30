@@ -7,12 +7,15 @@
 
 namespace Usuario;
 
+use Usuario\Controller\Factory\UsuarioControllerFactory;
 use Usuario\Controller\UsuarioController;
+use Usuario\Service\Factory\AuthenticationServiceFactory;
+use Zend\Authentication\AuthenticationService;
+use Zend\Authentication\AuthenticationServiceInterface;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-
 
 class Module implements ConfigProviderInterface
 {
@@ -62,25 +65,18 @@ class Module implements ConfigProviderInterface
                     $resultSetPrototype->setArrayObjectPrototype(new Model\CidadeModel());
                     return new TableGateway('cidade', $dbAdapter, null, $resultSetPrototype);
                 },
-
-
-
+                AuthenticationService::class => AuthenticationServiceFactory::class,
             ],
+            'aliases' => [
+                //AuthenticationService::class => AuthenticationServiceFactory::class
+            ],
+
         ];
     }
     public function getControllerConfig()
     {
         return [
-            'factories' => [
-                UsuarioController::class => function($container){
-                    return new Controller\UsuarioController(
-                        $container->get(Model\UsuarioTable::class),
-                        $container->get(Model\EstadoTable::class),
-                        $container->get(Model\CidadeTable::class)
-
-                    );
-                }
-            ]
+            'factories' => []
         ];
     }
 

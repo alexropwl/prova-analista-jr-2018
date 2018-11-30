@@ -37,19 +37,12 @@ class UsuarioTable
             'bairro' => $usuario->bairro,
             'codigo_cidade' => $usuario->codigo_cidade,
             'cep' => $usuario->cep,
-            'senha' => $usuario->senha,
+            'senha' => md5($usuario->senha),
         ];
-
-
-        echo "<pre>";
-        print_r($data);
-        die();
 
         $this->tableGateway->insert($data);
 
 
-
-        //$this->tableGateway->update($data, ['email' => $email]);
     }
 
 }

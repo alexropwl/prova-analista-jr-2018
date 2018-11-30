@@ -7,24 +7,14 @@
 
 namespace Usuario;
 
+use Usuario\Controller\Factory\UsuarioControllerFactory;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
         'routes' => [
-            'usuario' => [
-                'type' => Literal::class,
-                'options' => [
-                    'route'    => '/usuario',
-                    'defaults' => [
-                        'controller' => Controller\UsuarioController::class,
-                        'action'     => 'index',
-                    ],
-                ],
-            ],
-            'usuario' => [
+                'usuario' => [
                 'type'    => Segment::class,
                 'options' => [
                     'route'    => '/usuario[/:action]',
@@ -34,11 +24,21 @@ return [
                     ],
                 ],
             ],
+            'admin' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/admin',
+                    'defaults' => [
+                        'controller' => Controller\UsuarioController::class,
+                        'action'     => 'admin',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
-            #Controller\UsuarioController::class => InvokableFactory::class,
+            Controller\UsuarioController::class => UsuarioControllerFactory::class,
         ],
     ],
     'view_manager' => [
